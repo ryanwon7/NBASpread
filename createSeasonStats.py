@@ -14,8 +14,8 @@ team_list = ['ATL', 'BOS', 'BRK', 'CHO', 'CHI', 'CLE', 'DAL', 'DEN', 'DET', 'GSW
 
 
 def retrieve_stats(team_string, season_start, season_end, location):
-    sql_string = "SELECT * FROM boxscores WHERE " + location + "='" + team_string + "' AND date>='" + season_start + "' AND date<='" + season_end + "';"
-    db_cursor.execute(sql_string)
+    sql_string = """SELECT * FROM boxscores WHERE " + location + "=%s AND date>=%s AND date<=%s;"""
+    db_cursor.execute(sql_string, (team_string, season_start, season_end))
     records = db_cursor.fetchall()
     if db_cursor.rowcount != 41:
         print("Error when retrieving {} records for team {}.".format(location, team_string))
