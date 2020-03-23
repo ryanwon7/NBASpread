@@ -94,9 +94,9 @@ def split_calculate_season_stats(split_stats):
     return [round(num, 4) for num in stats_unrounded]
 
 
-def commit_sql_insert(season_stats, split, team, start, end):
+def commit_sql_insert(season_stats, team, start, end):
     season_string = start[2:4] + '-' + end[2:4]
-    sql_string = "INSERT INTO " + split + "seasonstats VALUES ('" + season_string + "', '" + team + "', " + str(season_stats[0]) + \
+    sql_string = "INSERT INTO seasonstats VALUES ('" + season_string + "', '" + team + "', " + str(season_stats[0]) + \
                  ", " + str(season_stats[1]) + ", " +  str(season_stats[2]) + ", " + str(season_stats[3]) + ", " + \
                  str(season_stats[4]) + ", " + str(season_stats[5]) + ", " + str(season_stats[6]) + ", " + str(season_stats[7]) \
                  + ", " + str(season_stats[8]) + ", " + str(season_stats[9]) + ", " + str(season_stats[10]) + ", " + str(season_stats[11]) \
@@ -112,11 +112,7 @@ def main():
             home_stats = retrieve_stats(team, date_set[0], date_set[1], "home")
             away_stats = retrieve_stats(team, date_set[0], date_set[1], "away")
             season_stats = calculate_season_stats(home_stats, away_stats)
-            home_season_stats = split_calculate_season_stats(home_stats)
-            away_season_stats = split_calculate_season_stats(away_stats)
-            commit_sql_insert(season_stats, '', team, date_set[0], date_set[1])
-            commit_sql_insert(home_season_stats, 'home', team, date_set[0], date_set[1])
-            commit_sql_insert(away_season_stats, 'away', team, date_set[0], date_set[1])
+            commit_sql_insert(season_stats, team, date_set[0], date_set[1])
 
     db_cursor.close()
     nbadb.close()

@@ -61,8 +61,8 @@ def retrieve_stats(team_string, season_start, season_end):
 
 
 def main():
-    if not os.path.exists("images"):
-        os.mkdir("images")
+    if not os.path.exists("../images"):
+        os.mkdir("../images")
 
     team = "PHI"
     start_date, end_date = "2017-10-17", "2018-04-12"  # 2017-2018 NBA season
