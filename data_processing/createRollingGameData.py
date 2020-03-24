@@ -53,7 +53,7 @@ def create_training_data():
                                               away_season_stats[11], away_season_stats[12], away_season_stats[13],
                                               away_season_stats[14], away_season_stats[16], away_season_stats[17],
                                               away_recent_stats[0], away_recent_stats[1], away_recent_stats[2],
-                                              away_recent_stats[3], betting_data, game[5]-game[4]))
+                                              away_recent_stats[3],  game[5]-game[4], betting_data))
         nbadb.commit()
 
 

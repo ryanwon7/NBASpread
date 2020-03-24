@@ -132,13 +132,13 @@ def main():
         )
     )
     fig1.show()
-    fig1.write_image("images/76ers_EFG_17-18.jpeg")
+    fig1.write_image("../images/76ers_EFG_17-18.jpeg")
     fig2.show()
-    fig2.write_image("images/76ers_TOV_17-18.jpeg")
+    fig2.write_image("../images/76ers_TOV_17-18.jpeg")
     fig3.show()
-    fig3.write_image("images/76ers_OREB_17-18.jpeg")
+    fig3.write_image("../images/76ers_OREB_17-18.jpeg")
     fig4.show()
-    fig4.write_image("images/76ers_FTF_17-18.jpeg")
+    fig4.write_image("../images/76ers_FTF_17-18.jpeg")
 
 
 if __name__ == '__main__':

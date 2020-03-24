@@ -1,4 +1,4 @@
-# Using Machine Learning to Predict NBA Point Spreads
+# Machine Learning to Predict NBA Point Spreads
 #### Ryan Won CS613
 ## Directory and File Description
 The directory contains a multitude of scripts that are placed in three sub-directories.
@@ -30,8 +30,10 @@ are from the rolling game dataset, as it is closer to modeling the prediction of
   data set.
   * **createLOFOImportance.py** - Runs F-Test and Mutual Importance feature testing on a given dataset. The given dataset
   (either rolling or average) must be exported to a csv first to be imported into this script.
-  * **createExampleFigure.py** - This script creates graphs of the four factors over a season for a given team for a 
+  * **createExampleFigures.py** - This script creates graphs of the four factors over a season for a given team for a 
   given season. 
+  * **createSpreadFigures.py** - Creates a simple plot of the vegas data vs the actual data as well as predicted data
+  vs the vegas data.
 ## Database Setup
 This project utilizes MySQL for database management tooling. The project contains the following five tables.
 * *bettingdata* - This table is created by the **spreadWebscraper.py** script. Each row in this table represents a game 

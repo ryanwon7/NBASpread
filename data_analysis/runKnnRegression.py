@@ -38,6 +38,7 @@ def main():
     np.random.shuffle(game_data)
     X = game_data[:, :-2]
     y = game_data[:, -2]
+    vegas_data = game_data[:, -1]
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.33, shuffle=False)
     X_train = standardize(x_train, x_train)
     X_test = standardize(x_test, x_train)
@@ -56,6 +57,21 @@ def main():
     avg = np.mean(np.abs(np.round(y_exp * 2) / 2 - y_test))
     print("Average deviation from actual point spread: {:.3f}".format(avg))
 
+    sum_total = 0
+    sum_correct = 0
+    sum_correct_outcome = 0
+    for pred, act, veg in zip(np.nditer(y_exp), np.nditer(y_test), np.nditer(vegas_data)):
+        sum_total += 1
+        if pred > veg and act > veg:
+            sum_correct += 1
+        elif pred < veg and act < veg:
+            sum_correct += 1
+        if pred > 0 and act > 0:
+            sum_correct_outcome += 1
+        elif pred < 0 and act < 0:
+            sum_correct_outcome += 1
+    print("Percentage of correct spread predictions: {}".format(sum_correct / sum_total))
+    print("Percentage of correct game predictions: {}".format(sum_correct_outcome / sum_total))
 
 if __name__ == '__main__':
     main()

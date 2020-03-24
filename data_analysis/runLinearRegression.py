@@ -36,6 +36,7 @@ def main():
 
     sum_correct = 0
     sum_total = 0
+    sum_correct_outcome = 0
     veg_avgs = np.zeros(shape=20)
     avgs = np.zeros(shape=20)
 
@@ -62,11 +63,18 @@ def main():
                     sum_correct += 1
                 elif pred < veg and act < veg:
                     sum_correct += 1
+                if pred > 0 and act > 0:
+                    sum_correct_outcome += 1
+                elif pred < 0 and act < 0:
+                    sum_correct_outcome += 1
 
             veg_avgs[i] = np.mean(np.abs(vegas_data[test_index] - test_y))
             avgs[i] = np.mean(np.abs(np.round(y_exp * 2) / 2 - test_y))
 
     print("Average deviation from actual point spread: {:.3f}".format(np.mean(avgs)))
+    print("Vegas deviation from actual point spread: {:.3f}".format(np.mean(veg_avgs)))
+    print("Percentage of correct spread predictions: {}".format(sum_correct/sum_total))
+    print("Percentage of correct game predictions: {}".format(sum_correct_outcome/sum_total))
 
 
 if __name__ == '__main__':
