@@ -1,5 +1,6 @@
 # Machine Learning to Predict NBA Point Spreads
 #### Ryan Won CS613
+Final Paper listed as Won-MachineLearningToPredictNBAPointSpreads.pdf
 ## Directory and File Description
 The directory contains a multitude of scripts that are placed in three sub-directories.
 * **data_collection** - This subdirectory deals with scripts responsbile for collecting or scraping data.
